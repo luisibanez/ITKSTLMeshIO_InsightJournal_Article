@@ -1,0 +1,3 @@
+[submodule "Source/ITKSTLMeshIO"]
+	path = Source/ITKSTLMeshIO
+	url = git@github.com:luisibanez/ITKSTLMeshIO
