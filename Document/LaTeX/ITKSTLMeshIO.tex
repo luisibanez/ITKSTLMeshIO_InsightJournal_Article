@@ -1,0 +1,140 @@
+%
+% Complete documentation on the extended LaTeX markup used for Insight
+% documentation is available in ``Documenting Insight'', which is part
+% of the standard documentation for Insight.  It may be found online
+% at:
+%
+%     http://www.itk.org/
+
+\documentclass{InsightArticle}
+
+\usepackage[dvips]{graphicx}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  hyperref should be the last package to be loaded.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[dvips,
+bookmarks,
+bookmarksopen,
+backref,
+colorlinks,linkcolor={blue},citecolor={blue},urlcolor={blue},
+]{hyperref}
+
+
+\title{MeshIO class to read and write STL files in ITK}
+
+%
+% NOTE: This is the last number of the "handle" URL that
+% The Insight Journal assigns to your paper as part of the
+% submission process. Please replace the number "1338" with
+% the actual handle number that you get assigned.
+%
+\newcommand{\IJhandlerIDnumber}{1338}
+
+% Increment the release number whenever significant changes are made.
+% The author and/or editor can define 'significant' however they like.
+\release{1.00}
+
+% At minimum, give your name and an email address.  You can include a
+% snail-mail address if you like.
+\author{Luis Ibanez$^{1}$}
+\authoraddress{$^{1}$Kitware Inc. Clifton Park, NY}
+
+\begin{document}
+
+%
+% Add hyperlink to the web location and license of the paper.
+% The argument of this command is the handler identifier given
+% by the Insight Journal to this paper.
+%
+\IJhandlefooter{\IJhandlerIDnumber}
+
+
+\ifpdf
+\else
+   %
+   % Commands for including Graphics when using latex
+   %
+   \DeclareGraphicsExtensions{.eps,.jpg,.gif,.tiff,.bmp,.png}
+   \DeclareGraphicsRule{.jpg}{eps}{.jpg.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.gif}{eps}{.gif.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.tiff}{eps}{.tiff.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.bmp}{eps}{.bmp.bb}{`convert #1 eps:-}
+   \DeclareGraphicsRule{.png}{eps}{.png.bb}{`convert #1 eps:-}
+\fi
+
+
+\maketitle
+
+
+\ifhtml
+\chapter*{Front Matter\label{front}}
+\fi
+
+
+% The abstract should be a paragraph or two long, and describe the
+% scope of the document.
+\begin{abstract}
+\noindent
+This document describes the implementation of an ITK class to support the
+reading and writing of Meshes in STL format. The Meshes are assumed to contain
+2D manifolds embedded in a 3D space. In practice, it would be desirable to use
+this class to read and write QuadEdgeMeshes.
+
+This paper is accompanied with the source code, input data, parameters and
+output data that the authors used for validating the algorithm described in
+this paper. This adheres to the fundamental principle that scientific
+publications must facilitate reproducibility of the reported results.
+
+\end{abstract}
+
+\IJhandlenote{\IJhandlerIDnumber}
+
+\tableofcontents
+
+\section{Introduction}
+
+The STL file format is a very common standards for the transmission of Mesh
+data.  Originally designed for Stereo Lithography, the STL format has become a
+widely used standard for storing and sharing mesh data.
+
+\url{http://en.wikipedia.org/wiki/STL_(file_format)}
+
+Recently, this format has been adopted as the standard way of preparing shapes
+as input to 3D printing. Given that ITK is a natural choice for segmenting
+anatomical structures from 3D medical data, it is desirable to be able to
+generate meshes from such structures, and then store them in STL files suitable
+for 3D printing. The class described in this article will make that possible,
+using a pure ITK pipeline.
+
+
+\section{Software Requirements}
+
+You need to have the following software installed:
+
+% The {itemize} environment uses a bullet for each \item.  If you want the 
+% \item's numbered, use the {enumerate} environment instead.
+\begin{itemize}
+  \item  Insight Toolkit 4.5
+  \item  CMake 2.8
+\end{itemize}
+
+Note that other versions of the Insight Toolkit are also available in the
+testing framework of the Insight Journal. Please refere to the following page
+for details
+
+\url{http://www.insightsoftwareconsortium.org/wiki/index.php/IJ-Testing-Environment}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  Insert the bibliography using BibTeX
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{plain}
+\bibliography{InsightJournal}
+
+\end{document}
