@@ -22,7 +22,7 @@ bbl: ${NAME}.bbl
 
 
 ${NAME}.ps: ${NAME}.dvi
-	dvips -o ${NAME}.ps ${NAME}.dvi
+	dvips -R0 -o ${NAME}.ps ${NAME}.dvi
 
 
 ${NAME}.pdf: ${NAME}.ps
